@@ -23,10 +23,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
   data: function data() {
     return {
-	  queries: [],
+	    queries: [],
       items: [],
       query: '',
       current: -1,
+      throttle: 350,
       loading: false,
       selectFirst: false,
       queryParamName: 'q'
@@ -68,7 +69,7 @@ exports.default = {
 		var param = _this2.queries.shift();
         if (_this2.queries.length == 0)
 			_this2.callFetch()
-      }, 1000, this);
+      }, this.throttle, this);
 
     },
     
